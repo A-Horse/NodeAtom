@@ -1,0 +1,23 @@
+{
+  "name": "NodeAtom",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/A-Horse/NodeAtom.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/A-Horse/NodeAtom/issues"
+  },
+  "homepage": "https://github.com/A-Horse/NodeAtom",
+  "dependencies": {
+    "js-yaml": "^3.4.3",
+    "lodash": "^3.10.1"
+  }
+}

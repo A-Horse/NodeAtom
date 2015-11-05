@@ -1,0 +1,7 @@
+
+config:
+  interval: 10000
+
+feed:
+  "http://nullprogram.com/feed/": [blog emacs]
+  "https://www.raspberrypi.org/feed/": [raspberry]
