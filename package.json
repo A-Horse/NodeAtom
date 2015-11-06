@@ -18,6 +18,8 @@
   "homepage": "https://github.com/A-Horse/NodeAtom",
   "dependencies": {
     "js-yaml": "^3.4.3",
-    "lodash": "^3.10.1"
+    "lodash": "^3.10.1",
+    "request": "^2.65.0",
+    "sqlite3": "^3.1.1"
   }
 }

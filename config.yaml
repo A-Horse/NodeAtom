@@ -1,5 +1,6 @@
 
 config:
+  db: "~/.nodeAtomDB"
   interval: 10000
 
 feed:
