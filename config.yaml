@@ -1,8 +1,10 @@
 
 config:
-  db: "~/.nodeAtomDB"
+  db: ".nodeAtomDB"
   interval: 10000
 
 feed:
-  "http://nullprogram.com/feed/": [blog emacs]
-  "https://www.raspberrypi.org/feed/": [raspberry]
+  #"http://nullprogram.com/feed/": [blog,emacs]
+  #"https://www.raspberrypi.org/feed/": [raspberry]
+  #"https://www.v2ex.com/feed/tab/tech.xml": [tech]
+  "http://stackoverflow.com/feeds/tag?tagnames=emacs&sort=newest": [technology]
