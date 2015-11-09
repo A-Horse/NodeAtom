@@ -30,17 +30,26 @@ _.mapKeys(defaultConfigYaml.feed, (v, k) => {
         xml2js(body, (e, result) => {
             //console.log(result);
             //console.log(util.inspect(result, false, null));
-            console.log(result);
+            //console.log(result);
+            parseFeed(result);
             //console.log(result.feed.entry);
         });
     });
 });
 
 let parseFeed = (result) => {
+    let entrys;
     if ( result.feed ) {
+        entrys = result.feed.entry;
         
+        
+    } else if ( result.rss ) {
+
     }
 
+    entrys.map(function(entry){
+        console.log(entry);
+    });
 };
 
 
