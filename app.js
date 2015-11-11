@@ -17,42 +17,51 @@ let defaultConfigYaml =
                 path.resolve(
                     myUtil.packageRoot, 'config.yaml')));
 
-//console.log("defaultConfigYaml = ", defaultConfigYaml);
-
-//let feeds = {};
-
-_.mapKeys(defaultConfigYaml.feed, (v, k) => {
-    console.log(k);
-    request(k, (e, res, body) => {
-        if ( e ) {
-            //throw e;
-        }
-        xml2js(body, (e, result) => {
-            //console.log(result);
-            //console.log(util.inspect(result, false, null));
-            //console.log(result);
-            parseFeed(result);
-            //console.log(result.feed.entry);
-        });
-    });
-});
+db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
 let parseFeed = (result) => {
     let entrys;
+
     if ( result.feed ) {
         entrys = result.feed.entry;
         
         
     } else if ( result.rss ) {
-
+        
     }
 
     entrys.map(function(entry){
-        console.log(entry);
+        //console.log(entry);
+        //db.insertAtom(entry);
+        db.lastInsertRowid('atom');
     });
 };
 
+_.mapKeys(defaultConfigYaml.feed, (v, k) => {
+    console.log(k);
+    request(k, (e, res, body) => {
+        if ( e ) {
+            throw e;
+        }
+        xml2js(body, (e, result) => {
+            //console.log(result);
+            //console.log(util.inspect(result, false, null));
+            //console.log(result);
+            if ( e ) {
+                throw e; 
+            }
+            
+            
+            parseFeed(result);
+            
+            //console.log(result.feed.entry);
+        });
+    });
+});
 
-//db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
+
+
+
+
 
 
