@@ -33,8 +33,11 @@ let parseFeed = (result) => {
     entrys.map(function(entry){
         //console.log(entry);
         //db.insertAtom(entry);
-        db.countTable('atom');
-        db.lastInsertRowid('atom');
+        
+        db.insertAtom(entry);
+        console.log('------------');
+        //db.countTable('atom');
+        //db.lastInsertRowid('atom');
     });
 };
 
@@ -59,7 +62,6 @@ _.mapKeys(defaultConfigYaml.feed, (v, k) => {
         });
     });
 });
-
 
 
 
