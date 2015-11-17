@@ -33,6 +33,7 @@ let parseFeed = (result) => {
     entrys.map(function(entry){
         //console.log(entry);
         //db.insertAtom(entry);
+        db.countTable('atom');
         db.lastInsertRowid('atom');
     });
 };
