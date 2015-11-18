@@ -1,10 +1,12 @@
 
 config:
   db: ".nodeAtomDB"
+  feedHash: ".nodeAtomHash"
   interval: 10000
 
 feed:
   #"http://nullprogram.com/feed/": [blog,emacs]
   #"https://www.raspberrypi.org/feed/": [raspberry]
   #"https://www.v2ex.com/feed/tab/tech.xml": [tech]
-  "http://stackoverflow.com/feeds/tag?tagnames=emacs&sort=newest": [technology]
+  #"http://stackoverflow.com/feeds/tag?tagnames=emacs&sort=newest": [technology]
+  "http://blog.zhaojie.me/rss": [blog cow]
