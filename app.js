@@ -23,27 +23,30 @@ let defaultConfigYaml =
 db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
 let parseFeed = (result) => {
-    let entrys;
+    let entrys = result.feed || result.rss;
+    
+    // if ( result.feed ) {
+    //     entrys = result.feed.entry;
+        
+    //     entrys.map(function(entry){
+    //         db.insertFeed(entry);
+    //         console.log('----------------');
+    //     });
+        
+    // } else if ( result.rss ) {
+        
+    //     entrys = result.rss.channel[0].item;
 
-    if ( result.feed ) {
-        entrys = result.feed.entry;
-        
-        entrys.map(function(entry){
-            db.insertFeed(entry);
-            console.log('----------------');
-        });
-        
-    } else if ( result.rss ) {
-        
-        entrys = result.rss.channel[0].item;
-
-        entrys.map((entry) => {
-            console.log('----------------');
-            db.insertRss(entry);
-        });
-    }
+    //     entrys.map((entry) => {
+    //         console.log('----------------');
+    //         db.insertRss(entry);
+    //     });
+    // }
 };
 
+let deconStruction = (entry) => {
+    
+};
 
 // xml 转成 json 有重大问题，我也不想这样写
 let tryAllPossible
