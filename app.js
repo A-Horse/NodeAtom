@@ -22,34 +22,62 @@ let defaultConfigYaml =
 
 db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
-let parseFeed = (result) => {
-    let entrys = result.feed || result.rss;
-    
-    // if ( result.feed ) {
-    //     entrys = result.feed.entry;
-        
-    //     entrys.map(function(entry){
-    //         db.insertFeed(entry);
-    //         console.log('----------------');
-    //     });
-        
-    // } else if ( result.rss ) {
-        
-    //     entrys = result.rss.channel[0].item;
 
-    //     entrys.map((entry) => {
-    //         console.log('----------------');
-    //         db.insertRss(entry);
-    //     });
-    // }
+let tryPossible = (...args) => {
+    
+};
+
+let findTitle = (entry) => {
+    return tryPossible();
+};
+
+let findLink = (entry) => {
+    
+};
+
+let findAuthor = (entry) => {
+    
+};
+
+let findContent = (entry) => {
+    
+};
+
+let findTime = (entry) => {
+    
 };
 
 let deconStruction = (entry) => {
     
+    let title = findTitle(entry),
+        link = findLink(entry),
+        author = findAuthor(entry),
+        content = findContent(entry),
+        time = findTime(entry);
+    console.log("time = ", time);
+    console.log("content = ", content);
+    console.log("author = ", author);
+    console.log("link = ", link);
+    console.log("title = ", title);
+    
 };
 
-// xml 转成 json 有重大问题，我也不想这样写
-let tryAllPossible
+let parseFeed = (result) => {
+    let entrys = result.feed || result.rss;
+
+    if ( entrys ) {
+        entrys.map(function(entry){
+            deconStruction(entry);
+        });
+    } else {
+        throw "not feed or rss";
+    }
+};
+
+
+
+
+
 
 let insertFeed = (entry) => {
     console.log(entry);
