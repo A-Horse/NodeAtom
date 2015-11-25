@@ -23,29 +23,6 @@ let defaultConfigYaml =
 db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
 
-let tryPossible = (...args) => {
-    
-};
-
-let findTitle = (entry) => {
-    return tryPossible();
-};
-
-let findLink = (entry) => {
-    
-};
-
-let findAuthor = (entry) => {
-    
-};
-
-let findContent = (entry) => {
-    
-};
-
-let findTime = (entry) => {
-    
-};
 
 let deconStruction = (entry) => {
     
@@ -63,15 +40,7 @@ let deconStruction = (entry) => {
 };
 
 let parseFeed = (result) => {
-    let entrys = result.feed || result.rss;
-
-    if ( entrys ) {
-        entrys.map(function(entry){
-            deconStruction(entry);
-        });
-    } else {
-        throw "not feed or rss";
-    }
+    
 };
 
 
@@ -180,7 +149,7 @@ _.mapKeys(defaultConfigYaml.feed, (v, k) => {
                 throw e; 
             }
             
-            parseFeed(result);
+            require('./lib/parse').parse(result);
 
         });
     });
