@@ -5,12 +5,12 @@ config:
   interval: 10000
 
 feed:
-  #"http://nullprogram.com/feed/": [blog,emacs]
-  #"https://www.raspberrypi.org/feed/": [raspberry]
-  #"https://www.v2ex.com/feed/tab/tech.xml": [tech]
-  #"http://stackoverflow.com/feeds/tag?tagnames=emacs&sort=newest": [technology]
-  #"http://blog.zhaojie.me/rss": [blog cow]
-  #"http://emacs-china.org/rss.xml": [emacs]
-  #"http://emacsist.com/rss": [emacs]
-  #"http://segmentfault.com/feeds": [front-end]
+  "http://nullprogram.com/feed/": [blog,emacs]
+  "https://www.raspberrypi.org/feed/": [raspberry]
+  "https://www.v2ex.com/feed/tab/tech.xml": [tech]
+  "http://stackoverflow.com/feeds/tag?tagnames=emacs&sort=newest": [technology]
+  "http://blog.zhaojie.me/rss": [blog cow]
+  "http://emacs-china.org/rss.xml": [emacs]
+  "http://emacsist.com/rss": [emacs]
+  "http://segmentfault.com/feeds": [front-end]
   "http://www.infoq.com/cn/feed": [tech]

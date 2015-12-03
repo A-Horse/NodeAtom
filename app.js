@@ -26,10 +26,20 @@ db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
 _.mapKeys(defaultConfigYaml.feed, (v, k) => {
 
-    request(k, (e, res, body) => {
+    request({
+        url: k,
+        timeout: 3000
+    }, (e, res, body) => {
 
         if (e) {
-            throw e;
+            if ( e.message === 'ETIMEDOUT' ) {
+                console.log('-------------------------------------------'.red);
+                console.log('ETIMEDOUT => '.bgRed + k.red);
+                console.log('-------------------------------------------'.red);
+            } else {
+                throw e;
+            }
+            return;
         }
 
         //var hash = md5(body);
