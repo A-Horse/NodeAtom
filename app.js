@@ -27,7 +27,7 @@ db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 var argv = require('optimist').argv;
 
 if ( argv.emacs ) {
-       require('/config').emacs = true;
+       require('./config').emacs = true;
 }
 
 _.mapKeys(defaultConfigYaml.feed, (v, k) => {
