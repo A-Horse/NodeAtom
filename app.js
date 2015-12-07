@@ -10,7 +10,8 @@ let yaml = require('js-yaml'),
 
 let myUtil = require('./lib/util'),
     db = require('./lib/db'),
-    xml2js = require('xml2js').parseString;
+    xml2js = require('xml2js').parseString,
+    show = require('./lib/show');
 
 let feedHash = {};
 
@@ -23,6 +24,11 @@ let defaultConfigYaml =
 db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
 
+var argv = require('optimist').argv;
+
+if ( argv.emacs ) {
+       require('/config').emacs = true;
+}
 
 _.mapKeys(defaultConfigYaml.feed, (v, k) => {
 
@@ -32,31 +38,22 @@ _.mapKeys(defaultConfigYaml.feed, (v, k) => {
     }, (e, res, body) => {
 
         if (e) {
-            if ( e.message === 'ETIMEDOUT' ) {
-                console.log('-------------------------------------------'.red);
-                console.log('ETIMEDOUT => '.bgRed + k.red);
-                console.log('-------------------------------------------'.red);
-            } else {
-                throw e;
-            }
-            return;
+                show.timeout(e);
+                return;
         }
 
-        //var hash = md5(body);
-        //console.log("hash = ", hash);
-
+        var hash = md5(body);
+        if ( !feedHash[k] ) {
+             feedHash = hash;
+        } else if ( feedHash[k] === hash ) {
+                return;
+        }
 
         xml2js(body, (e, result) => {
-            //console.log(result);
-            //console.log(util.inspect(result, false, null));
-            //console.log(result);
             if (e) {
                 throw e;
             }
             require('./lib/parse').parse(result);
-            
-            //db.insertAtom(res);
-
         });
     });
 });
