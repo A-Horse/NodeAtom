@@ -16,44 +16,50 @@ let myUtil = require('./lib/util'),
 let feedHash = {};
 
 let defaultConfigYaml =
-        yaml.safeLoad(
-            fs.readFileSync(
-                path.resolve(
-                    myUtil.packageRoot, 'config.yaml')));
+    yaml.safeLoad(
+        fs.readFileSync(
+            path.resolve(
+                myUtil.packageRoot, 'config.yaml')));
 
 db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 
-
 var argv = require('optimist').argv;
 
-if ( argv.emacs ) {
-       require('./config').emacs = true;
+if (argv.emacs) {
+    require('./config').emacs = true;
 }
 
-_.mapKeys(defaultConfigYaml.feed, (v, k) => {
+let queryFeed = () => {
+    _.mapKeys(defaultConfigYaml.feed, (v, k) => {
+        request({
+            url: k,
+            timeout: 3000
+        }, (e, res, body) => {
 
-    request({
-        url: k,
-        timeout: 3000
-    }, (e, res, body) => {
-
-        if (e) {
+            if (e) {
                 show.timeout(e);
                 return;
-        }
-
-        var hash = md5(body);
-        if ( !feedHash[k] ) {
-             feedHash = hash;
-        } else if ( feedHash[k] === hash ) {
-                return;
-        }
-
-        xml2js(body, (e, result) => {
-            if (e) {
-                throw e;
             }
-            require('./lib/parse').parse(result);
+            var hash = md5(body);
+            if (!feedHash[k]) {
+                feedHash = hash;
+            } else if (feedHash[k] === hash) {
+                return;
+            }
+
+            xml2js(body, (e, result) => {
+                if (e) {
+                    throw e;
+                }
+                require('./lib/parse').parse(result);
+            });
         });
     });
-});
+};
+
+
+
+queryFeed();
+let mainProcess = setInterval(function(){
+    queryFeed();
+}, defaultConfigYaml.config.interval);
