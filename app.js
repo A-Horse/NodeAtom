@@ -46,7 +46,7 @@ let queryFeed = () => {
             } else if (feedHash[k] === hash) {
                 return;
             }
-
+            
             xml2js(body, (e, result) => {
                 if (e) {
                     throw e;
