@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-        emacs: false
+    emacs: false,
+    serverPort: 32768
 };

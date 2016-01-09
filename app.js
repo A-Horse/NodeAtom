@@ -51,7 +51,7 @@ let queryFeed = () => {
                 if (e) {
                     throw e;
                 }
-                require('./lib/parse').parse(result);
+                require('./lib/parse').parse(result, v); //v = [tags]
             });
         });
     });
