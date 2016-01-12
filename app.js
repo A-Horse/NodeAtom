@@ -15,6 +15,7 @@ let myUtil = require('./lib/util'),
 
 let feedHash = {};
 
+// TODO 自定义 yaml
 let defaultConfigYaml =
     yaml.safeLoad(
         fs.readFileSync(
@@ -26,7 +27,21 @@ db.init(path.join(process.env.HOME, defaultConfigYaml.config.db));
 var argv = require('optimist').argv;
 
 if (argv.emacs) {
-    require('./config').emacs = true;
+    global.emacs = true;
+}
+
+if (argv.notifier) {
+    global.notifier = true;
+    require('./lib//show').notifierStart();
+}
+
+if (argv.clean) {
+    db.deleteAllEntry(function(res){
+        if ( res ) {
+            console.log('clean successful!');
+            process.exit();
+        }
+    });
 }
 
 let queryFeed = () => {
@@ -58,8 +73,11 @@ let queryFeed = () => {
 };
 
 
-
-queryFeed();
-let mainProcess = setInterval(function(){
+if ( !argv.clean ) {
     queryFeed();
-}, defaultConfigYaml.config.interval);
+    let mainProcess = setInterval(function(){
+        queryFeed();
+    }, defaultConfigYaml.config.interval);
+
+    //require('./server')(defaultConfigYaml.config.serverPort);
+}

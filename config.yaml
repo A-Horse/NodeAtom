@@ -3,6 +3,7 @@ config:
   db: "nodeAtomDB"
   feedHash: ".nodeAtomHash"
   interval: 10000
+  serverPort: 32768
 
 feed:
   "http://nullprogram.com/feed/": [blog,emacs]
