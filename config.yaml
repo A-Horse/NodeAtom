@@ -13,5 +13,4 @@ feed:
   "http://blog.zhaojie.me/rss": [blog cow]
   "http://emacs-china.org/rss.xml": [emacs]
   "http://emacsist.com/rss": [emacs]
-  "http://segmentfault.com/feeds": [front-end]
   "http://www.infoq.com/cn/feed": [tech]
