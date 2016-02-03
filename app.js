@@ -15,6 +15,8 @@ let myUtil = require('./lib/util'),
 
 let feedHash = {};
 
+require('./server.js')(7788);
+
 // TODO 自定义 yaml
 let defaultConfigYaml =
     yaml.safeLoad(
@@ -82,6 +84,5 @@ if ( !argv.clean ) {
     let mainProcess = setInterval(function(){
         queryFeed();
     }, defaultConfigYaml.config.interval);
-
     //require('./server')(defaultConfigYaml.config.serverPort);
 }
