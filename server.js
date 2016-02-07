@@ -11,9 +11,17 @@ let serverPort = require('./config').serverPort;
 app.get('/new-unread/:number', (req, res) => {
     let number = req.params.number;
     db.getNewUnread(number, function(rows){
-        res.send(rows);
+        res.send({result: rows});
     });
 });
+
+app.get('/new/:number', (req, res) => {
+    let number = req.params.number;
+    db.getNew(number, function(rows){
+        res.send({result: rows});
+    });
+});
+
 
 app.get('/entry/:id', (req, res) => {
     let id = req.params.id;
