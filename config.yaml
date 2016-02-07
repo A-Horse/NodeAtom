@@ -14,3 +14,4 @@ feed:
   "http://emacs-china.org/rss.xml": [emacs]
   "http://emacsist.com/rss": [emacs]
   "http://www.infoq.com/cn/feed": [tech]
+  "http://www.cyberciti.biz/feed/": [linux]
