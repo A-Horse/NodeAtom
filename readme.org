@@ -1,0 +1,10 @@
+* NodeAtom
+
+RSS 命令行订阅程序
+
+** usage:
+*** command line 
+在命令行启动, 只需要在 config.yaml 中填入 rss 地址，npm run 即可订阅 rss.
+
+*** integrate with emacs 
+emacs-feedjs 后台, 在 emacs 中安装好 [[https://github.com/Emacs-Phoenix/emacs-feedjs][emacs-feedjs]] 即可在 emacs 集成，可在 buffer 阅读 rss，在敲代码的时候提示 rss，了解业界最新动态
