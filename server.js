@@ -27,7 +27,7 @@ app.get('/entry/:id', (req, res) => {
     let id = req.params.id;
     db.getEntryByID(id, function(row){
         if ( row ) {
-            res.send(row);
+          res.send(row);
         }
     });
 });
@@ -63,12 +63,3 @@ app.get('/tags/', function(req, res){
 module.exports = function(port){
     app.listen(port);
 };
-
-
-
-
-
-
-
-
-
