@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "emacs": "node app.js --emacs"
   },
   "repository": {
     "type": "git",
@@ -17,11 +17,13 @@
   },
   "homepage": "https://github.com/A-Horse/NodeAtom",
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "colors": "^1.1.2",
     "express": "^4.13.3",
     "js-yaml": "^3.4.3",
     "lodash": "^3.10.1",
     "md5": "^2.0.0",
+    "moment": "^2.18.1",
     "node-notifier": "^4.4.0",
     "opener": "^1.4.1",
     "optimist": "^0.6.1",
