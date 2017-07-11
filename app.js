@@ -12,7 +12,7 @@ let myUtil = require('./lib/util'),
     db = require('./lib/db'),
     xml2js = require('xml2js').parseString,
     show = require('./lib/show');
-
+2
 let feedHash = {};
 
 require('./server.js')(7788);
@@ -69,20 +69,19 @@ let queryFeed = () => {
           if (e) {
             throw e;
           }
-          require('./lib/parse').parse(result, v); //v = [tags]
+          require('./lib/parse').parse(result, v); // v = [tags]
         });
       } catch(error) {
-        
+
       }
     });
   });
 };
 
-
 if ( !argv.clean ) {
   queryFeed();
-  let mainProcess = setInterval(function(){
+  let mainProcess = setInterval(function() {
     queryFeed();
   }, defaultConfigYaml.config.interval);
-  //require('./server')(defaultConfigYaml.config.serverPort);
+  // require('./server')(defaultConfigYaml.config.serverPort);
 }
